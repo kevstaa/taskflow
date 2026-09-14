@@ -12,7 +12,7 @@ type Config struct {
 
 func Load() Config {
 	return Config{
-		Port:        getEnv("PORT", "8080:"),
+		Port:        getEnv("PORT", "8080"),
 		JWTSecret:   getEnv("JWT_SECRET", ""),
 		DatabaseURL: getEnv("DATABASE_URL", ""),
 		RedisURL:    getEnv("REDIS_URL", ""),
