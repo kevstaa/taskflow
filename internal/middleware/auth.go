@@ -45,8 +45,19 @@ func (m *AuthMiddleware) Authenticate(next http.Handler) http.Handler {
 			return
 		}
 
-		claims := token.Claims.(jwt.MapClaims)
-		userID := claims["user_id"].(string)
+		claims, ok := token.Claims.(jwt.MapClaims)
+		if !ok {
+			w.WriteHeader(http.StatusUnauthorized)
+			fmt.Fprintln(w, `{"error": "invalid token"}`)
+			return
+		}
+
+		userID, ok := claims["user_id"].(string)
+		if !ok || userID == "" {
+			w.WriteHeader(http.StatusUnauthorized)
+			fmt.Fprintln(w, `{"error": "invalid token"}`)
+			return
+		}
 
 		ctx := context.WithValue(r.Context(), UserIDKey, userID)
 		next.ServeHTTP(w, r.WithContext(ctx))

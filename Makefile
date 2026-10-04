@@ -13,10 +13,10 @@ docker-down:
 	docker compose down
 
 migrate-up:
-	export $(shell cat .env | xargs) && migrate -path migrations -database "$$DATABASE_URL" up
+	export $(cat .env | xargs) && migrate -path migrations -database "$$DATABASE_URL" up
 
 migrate-down:
-	export $(shell cat .env | xargs) && migrate -path migrations -database "$$DATABASE_URL" down
+	export $(cat .env | xargs) && migrate -path migrations -database "$$DATABASE_URL" down
 
 sqlc:
 	sqlc generate
