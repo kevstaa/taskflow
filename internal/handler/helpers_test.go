@@ -14,8 +14,6 @@ import (
 
 var errBoom = errors.New("boom")
 
-// do lanza una petición contra h. Si userID != "" lo inyecta en el contexto,
-// igual que haría el middleware de autenticación.
 func do(h http.Handler, method, path, body, userID string) *httptest.ResponseRecorder {
 	req := httptest.NewRequest(method, path, strings.NewReader(body))
 	if userID != "" {

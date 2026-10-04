@@ -115,12 +115,6 @@ func TestTaskHandler_GetByProject(t *testing.T) {
 	}
 }
 
-// ---------------------------------------------------------------------------
-// OJO: los tres tests siguientes FALLAN con el código actual.
-// GetByID, Update y Delete leen chi.URLParam(r, "id"), que en la ruta
-// /api/projects/{id}/tasks/{tid} es el ID del PROYECTO. El de la tarea es "tid".
-// ---------------------------------------------------------------------------
-
 func TestTaskHandler_GetByID_UsaElIDDeLaTarea(t *testing.T) {
 	svc := &fakeTaskService{task: &model.Task{ID: "task-1"}}
 	rec := do(taskRouter(NewTaskHandler(svc)), http.MethodGet, "/api/projects/proj-1/tasks/task-1", "", "user-1")

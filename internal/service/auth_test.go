@@ -14,7 +14,7 @@ import (
 
 var errBoom = errors.New("boom")
 
-// ---- fake en memoria de UserRepo ----
+// ---- fake memory of UserRepo ----
 
 type fakeUserRepo struct {
 	byEmail   map[string]*model.User

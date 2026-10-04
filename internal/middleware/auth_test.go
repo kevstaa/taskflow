@@ -93,7 +93,6 @@ func TestAuthenticate_TokenValido_PonerUserIDEnContexto(t *testing.T) {
 	}
 }
 
-// Token con firma válida pero claims inesperados: debe responder 401, nunca provocar panic.
 func TestAuthenticate_ClaimUserIDInvalido(t *testing.T) {
 	tests := []struct {
 		name   string
