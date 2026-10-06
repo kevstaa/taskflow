@@ -1,6 +1,6 @@
 # TaskFlow API
 
-A RESTful API for project and task management built with Go, following Clean Architecture principles.
+A REST API for project and task management built with Go, following Clean Architecture principles.
 
 ## Tech Stack
 
